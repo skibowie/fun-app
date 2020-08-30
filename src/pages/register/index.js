@@ -41,7 +41,7 @@ export const Register = () => {
       history.push("/home");
     }
   }, []);
-
+  console.log('t')
   useEffect(() => {
     if (wasSubmit) {
       validate();
