@@ -1,0 +1,21 @@
+@import "styles/colors.scss";
+
+.custom-page-wrapper {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: $main-background;
+  .custom-page-wrapper-content {
+      margin-top: -80px;
+    .custom-page-wrapper-header {
+      margin-bottom: 30px;
+      .custom-page-wrapper-title {
+        font-size: 24px;  
+      }
+      .custom-page-wrapper-addition {
+        font-size: 20px;
+        margin-top: 50px;
+        cursor: pointer;
+      }
+    }
+  }
+}
