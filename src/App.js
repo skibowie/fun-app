@@ -1,25 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import firebase from "firebase";
 import { Switch, Route, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import { Dashboard } from "./pages/dashboard";
 import { Loader } from "ui";
+import { setUserData } from "store/actions";
 
-export const PrivateRoute = ({
-  component: Component,
-  path,
-  exact,
-}) => {
+export const PrivateRoute = ({ component: Component, path, exact }) => {
+  const isUserLogged = localStorage.getItem("user");
   return (
     <Route
       exact={exact}
       path={path}
       render={() => {
-        const user = firebase.auth().currentUser;
-        return user ? <Component /> : <Redirect to={{ pathname: "/login" }} />;
+        return isUserLogged ? (
+          <Component />
+        ) : (
+          <Redirect to={{ pathname: "/login" }} />
+        );
       }}
     />
   );
@@ -32,14 +33,24 @@ PrivateRoute.propTypes = {
 };
 
 const App = () => {
-  const loading = useSelector(state => state.user.status);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(setUserData(user.email));
+        localStorage.setItem("user", user.email);
+      }
+    });
+  }, []);
+
+  const loading = useSelector((state) => state.user.status);
   return (
     <>
       <Loader loading={loading === "FETCHING"} />
       <Switch>
         <PrivateRoute path="/home" exact component={Dashboard} />
-        <Route path="/login"  component={Login} />
-        <Route path="/register"  component={Register} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Redirect path="*" to="/home" />
       </Switch>
     </>

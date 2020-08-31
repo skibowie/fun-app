@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import firebase from "firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -23,13 +22,13 @@ export const Login = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector(state => state.user.userData);
 
   useEffect(() => {
-    const user = firebase.auth().currentUser;
-    if (user) {
+    if (user.name) {
       history.push("/home");
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (wasSubmit) {

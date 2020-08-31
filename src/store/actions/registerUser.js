@@ -14,6 +14,7 @@ export const registerUser = (email, password, name ) => (dispatch) => {
                 email: email,
             });
             dispatch({type: SET_USER_DATA, payload: { email: email, name: name }});
+            localStorage.setItem("user", email);
             resolve();
         })
         .catch((err) => {
