@@ -10,7 +10,6 @@ import { Loader } from "ui";
 import { setUserData } from "store/actions";
 
 export const PrivateRoute = ({ component: Component, path, exact }) => {
-    console.log("dupa")
   const isUserLogged = localStorage.getItem("user");
   return (
     <Route
