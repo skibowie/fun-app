@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
@@ -8,6 +9,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import Button from "@material-ui/core/Button";
 import { CustomPageWrapper } from "ui";
+
 import { validateEmail, validatePass } from "helpers";
 import { loginUser } from "store/actions";
 import "./styles.scss";

@@ -1,7 +1,7 @@
-@import "styles/colors";
+@import "src/styles/colors";
 
 .register-form-wrapper {
-  background-color: $light-background;
+  background-color: $color-greenish;
   margin-top: 20px;
   width: 500px;
   border: 1px solid $dark-border;

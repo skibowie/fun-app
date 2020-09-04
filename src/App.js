@@ -48,7 +48,7 @@ const App = () => {
     <>
       <Loader loading={loading === "FETCHING"} />
       <Switch>
-        <PrivateRoute path="/home" exact component={Dashboard} />
+        <PrivateRoute path="/home" exact component={Dashboard}  />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Redirect path="*" to="/home" />

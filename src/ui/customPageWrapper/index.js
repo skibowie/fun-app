@@ -32,7 +32,7 @@ export const CustomPageWrapper = ({ children, title, additions }) => {
         >
           Masz konto ?
           <em>
-            <b> Zaloguje się!</b>
+            <b> Zaloguj się!</b>
           </em>
         </div>
       );
