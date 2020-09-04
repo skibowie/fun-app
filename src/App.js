@@ -10,7 +10,6 @@ import { Loader } from "ui";
 import { setUserData } from "store/actions";
 
 export const PrivateRoute = ({ component: Component, path, exact }) => {
-    console.log("dupa")
   const isUserLogged = localStorage.getItem("user");
   return (
     <Route
@@ -49,7 +48,7 @@ const App = () => {
     <>
       <Loader loading={loading === "FETCHING"} />
       <Switch>
-        <PrivateRoute path="/home" exact component={Dashboard} />
+        <PrivateRoute path="/home" exact component={Dashboard}  />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Redirect path="*" to="/home" />

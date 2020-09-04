@@ -1,0 +1,30 @@
+*{
+  box-sizing: border-box;
+}
+
+.container {
+  width: 80vw;
+  margin: 0 auto;
+  //padding: 0 10px;
+  .row {
+    display: flex;
+    [class*="col-"] {
+      width: 100%;
+      min-height: 1px;
+      padding: 10px 10px;
+    }
+    @for $i from 1 through 12 {
+      .col-#{$i} {
+        flex: 0 0 (100%/12) * $i;
+      }
+    }
+  }
+}
+
+.box {
+  background-color: #fff;
+  padding: 10px 10px;
+}
+
+
+
