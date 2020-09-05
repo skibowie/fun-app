@@ -1,9 +1,11 @@
-import { CHANGE_STATUS_FETCHING, CHANGE_STATUS_FULFILLED, SET_USER_DATA } from "../../types";
+/* eslint-disable no-case-declarations */
+import { CHANGE_STATUS_FETCHING, CHANGE_STATUS_FULFILLED, SET_USER_DATA, SET_USER_KCAL } from "../../types";
 
 const initialState = {
   userData: {
     name: "",
     email: "",
+    requireKcal: null,
   },
   error: "",
   status: "FULFILLED",
@@ -21,6 +23,13 @@ export const userReducer = (state = initialState, { type, payload }) => {
         ...state,
         status: "FULFILLED",
       };
+      case SET_USER_KCAL:
+        const newUserData = Object.assign({}, state.userData);
+        newUserData.requireKcal = payload;
+        return {
+          ...state,
+          userData: newUserData,
+        };
     case SET_USER_DATA: 
       return {
         ...state,

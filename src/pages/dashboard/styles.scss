@@ -8,6 +8,7 @@ $bg-img: url("../../styles/resources/iabloki-sparzha-ogurtsy-kivi-ovoshchi-frukt
 
 .main_dashboard{
   @include background;
+  min-height: 100vh;
   background-image:$bg-img;
 }
 
@@ -26,16 +27,6 @@ $bg-img: url("../../styles/resources/iabloki-sparzha-ogurtsy-kivi-ovoshchi-frukt
       font-size: 1.5rem;
       text-align: center;
     }
-  }
-
-  .formCalculator{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: $font-primary;
-    color: white;
-    font-size: 1.3rem;
   }
 
   .calendar-modal-body-wrapper {

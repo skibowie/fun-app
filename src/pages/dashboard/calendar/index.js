@@ -1,166 +1,77 @@
-import React from 'react';
-import './styles.scss'
-import TextField from '@material-ui/core/TextField';
-import {makeStyles} from '@material-ui/core/styles';
-
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-            backgroundColor: 'white'
-        },
-        title: {
-            textAlign: 'center'
-        }
-    },
-}));
-
+import React, { useReducer } from "react";
+import { reducer, initialState } from "./_formReduce";
+import "./styles.scss";
+import { DayPlaner } from "./_dayPlaner";
 
 export const Calendar = () => {
-    const classes = useStyles();
-
-    const [value, setValue] = React.useState('Controlled');
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
-
-
-    return <>
-    <div className="container">
-        <div className="row">
-            <div className="col-12 ">
-                <div className="box "> Twój plan odżywiania</div>
-            </div>
-
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <div className="calendar-container">
+      <div className="row">
+        <div className="col-12 ">
+          <div className="box "> Twój plan odżywiania</div>
         </div>
-        <div className="row">
-            <div className="col-4">
-                <div className="box">
-                    <h1>Poniedziałek</h1>
-                    <form noValidate autoComplete="off" className={classes.root}>
-                        <div>
-
-                            <TextField
-                                id="standard-textarea"
-                                label="Śniadanie"
-                                placeholder="Śniadanie"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label="Drugie śniadanie"
-                                placeholder="Drugie śniadanie"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label='Obiad'
-                                placeholder="Obiad"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label='Podwieczorek'
-                                placeholder="Podwieczorek"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label='Kolacja'
-                                placeholder="Kolacja"
-                                multiline
-                            />
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
-            <div className="col-4">
-                <div className="box">
-                    <h1>Wtorek</h1>
-                    <form noValidate autoComplete="off" className={classes.root}>
-                        <div>
-
-                            <TextField
-                                id="standard-textarea"
-                                label="Śniadanie"
-                                placeholder="Śniadanie"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label="Drugie śniadanie"
-                                placeholder="Drugie śniadanie"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label='Obiad'
-                                placeholder="Obiad"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label='Podwieczorek'
-                                placeholder="Podwieczorek"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label='Kolacja'
-                                placeholder="Kolacja"
-                                multiline
-                            />
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div className="col-4">
-                <div className="box">
-                    <h1>Środa</h1>
-                    <form noValidate autoComplete="off" className={classes.root}>
-                        <div>
-
-                            <TextField
-                                id="standard-textarea"
-                                label="Śniadanie"
-                                placeholder="Śniadanie"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label="Drugie śniadanie"
-                                placeholder="Drugie śniadanie"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label='Obiad'
-                                placeholder="Obiad"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label='Podwieczorek'
-                                placeholder="Podwieczorek"
-                                multiline
-                            />
-                            <TextField
-                                id="standard-textarea"
-                                label='Kolacja'
-                                placeholder="Kolacja"
-                                multiline
-                            />
-                        </div>
-                    </form>
-                </div>
-            </div>
-
+      </div>
+      <div className="days-container">
+        <div className="day-wrapper">
+          <DayPlaner
+            dayName="poniedziałek"
+            state={state}
+            dispatch={dispatch}
+            typeData="monday"
+          />
         </div>
+        <div className="day-wrapper">
+          <DayPlaner
+            dayName="wtorek"
+            state={state}
+            dispatch={dispatch}
+            typeData="tuesday"
+          />
+        </div>
+        <div className="day-wrapper">
+          <DayPlaner
+            dayName="środa"
+            state={state}
+            dispatch={dispatch}
+            typeData="wednesday"
+          />
+        </div>
+
+        <div className="day-wrapper">
+          <DayPlaner
+            dayName="czwartek"
+            state={state}
+            dispatch={dispatch}
+            typeData="thursday"
+          />
+        </div>
+        <div className="day-wrapper">
+          <DayPlaner
+            dayName="piątek"
+            state={state}
+            dispatch={dispatch}
+            typeData="friday"
+          />
+        </div>
+        <div className="day-wrapper">
+          <DayPlaner
+            dayName="sobota"
+            state={state}
+            dispatch={dispatch}
+            typeData="saturday"
+          />
+        </div>
+
+        <div className="day-wrapper">
+          <DayPlaner
+            dayName="Niedziela kotełkowa"
+            state={state}
+            dispatch={dispatch}
+            typeData="sunday"
+          />
+        </div>
+      </div>
     </div>
-</>
-}
+  );
+};

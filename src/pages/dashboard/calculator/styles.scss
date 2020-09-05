@@ -1,0 +1,19 @@
+@import "src/styles/colors";
+@use 'sass:color';
+@import "src/styles/global";
+
+.form-calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: $font-primary;
+  color: white;
+  font-size: 1.3rem;
+
+}
+.calculator-button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
